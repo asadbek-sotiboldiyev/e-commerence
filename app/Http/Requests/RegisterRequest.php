@@ -29,4 +29,22 @@ class RegisterRequest extends FormRequest
         ];
     }
 
+    public function messages(): array
+    {
+        return [
+            "required" => ":attribute ni to'ldiring",
+
+            "email.unique" => "Email band",
+            "password2.same" => "Parolni to'g'ri takrorlang",
+        ];
+    }
+
+    public function attributes(): array
+    {
+        return [
+            "password" => "parol",
+            "password2" => "takroriy parol",
+            "name" => "ism",
+        ];
+    }
 }
