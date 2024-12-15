@@ -9,22 +9,22 @@
         <div class="form-control">
             <label for="emailInput">Email</label>
             <input type="email" name="email" id="emailInput" value="{{ session('email') }}">
+            @error('email')
+                <p>*{{ $message }}</p>
+            @enderror
         </div>
         <div class="form-control">
             <label for="passwordInput">Parol</label>
             <input type="password" name="password" id="passwordInput">
+            @error('password')
+                <p>*{{ $message }}</p>
+            @enderror
         </div>
+        @error('loginError')
+            <p>*{{ $message }}</p>
+        @enderror
         <button>Kirish</button>
         <hr>
         <a href="{{ route('register') }}">Ro'yxatdan o'tish</a>
     </form>
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
 @endsection

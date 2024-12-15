@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RegisterRequest;
+use App\Http\Requests\LoginRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,20 +27,15 @@ class AuthController extends Controller
         return redirect()->route('login');
     }
 
-    public function loginStore(Request $request){
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required'
-        ]);
-        $data = [
-            'email' => $request->email,
-            'password' => $request->password,
-        ];
+    public function loginStore(LoginRequest $request){
+        $data = $request->validated();
         if(Auth::attempt($data)){
             $request->session()->regenerate();
             return redirect('/');
         }
-        return back()->withErrors("Ma'lumotlar noto'g'ri")->with('email', $request->email);
+        return back()->withErrors([
+            'loginError' => "Foydalanuvchi topilmadi"
+        ]);
     }
 
     public function logout(Request $request){

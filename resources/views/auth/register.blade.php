@@ -8,7 +8,7 @@
     <h1>Ro'yxatdan o'tish</h1>
     <div class="form-control">
         <label for="nameInput">Ism</label>
-        <input type="text" name="name" id="nameInput">
+        <input type="text" name="name" id="nameInput" value="{{ old('name') }}">
         @error('name')
             <p>*{{ $message }}
             </p>
@@ -16,7 +16,7 @@
     </div>
     <div class="form-control">
         <label for="emailInput">Email</label>
-        <input type="email" name="email" id="emailInput">
+        <input type="email" name="email" id="emailInput" value="{{ old('email') }}">
         @error('email')
             <p>*{{ $message }}
             </p>

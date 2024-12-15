@@ -13,7 +13,7 @@
         </h1>
         <nav>
             @auth
-                <a href="#">Profil</a>
+                <a href="{{ route('profile') }}">Profil</a>
                 <a href="{{ route('logout') }}">Chiqish</a>
             @endauth
             @guest

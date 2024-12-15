@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,4 +25,8 @@ Route::prefix('/auth')->group(function () {
     Route::get('/register', [AuthController::class, 'register'])->name('register');
     Route::post('/register', [AuthController::class, 'registerStore'])->name('registerStore');
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+});
+
+Route::prefix('/profile')->middleware('auth')->group(function () {
+    Route::get('/', [UserController::class, 'showProfile'])->name('profile');
 });
