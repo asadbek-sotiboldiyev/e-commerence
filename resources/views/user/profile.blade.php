@@ -23,6 +23,6 @@
 		</div>
 	</form>
 	<h3>
-		<a href="#">Sotuvchi bo'ling</a>
+		<a href="{{ route('sellerAbout') }}">Sotuvchi bo'ling</a>
 	</h3>
 @endsection

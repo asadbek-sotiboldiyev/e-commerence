@@ -9,5 +9,5 @@ class Seller extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'shop_id', 'phone'];
+    protected $fillable = ['user_id', 'phone'];
 }

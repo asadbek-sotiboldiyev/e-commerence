@@ -23,8 +23,8 @@ class AuthController extends Controller
         $data = $request->validated();
         $data['password'] = Hash::make($data['password']);
         $user = User::create($data);
-        // auth()->login($user);
-        return redirect()->route('login');
+        auth()->login($user);
+        return redirect()->route('home');
     }
 
     public function loginStore(LoginRequest $request){
@@ -35,7 +35,7 @@ class AuthController extends Controller
         }
         return back()->withErrors([
             'loginError' => "Foydalanuvchi topilmadi"
-        ]);
+        ])->with('email', $data['email']);
     }
 
     public function logout(Request $request){

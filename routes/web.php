@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\SellerController;
+use App\Http\Controllers\PagesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +17,7 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [PagesController::class, 'home'])->name('home');
 
 Route::prefix('/auth')->group(function () {
     Route::get('/login', [AuthController::class, 'login'])->name('login');
@@ -29,4 +29,11 @@ Route::prefix('/auth')->group(function () {
 
 Route::prefix('/profile')->middleware('auth')->group(function () {
     Route::get('/', [UserController::class, 'showProfile'])->name('profile');
+});
+
+Route::prefix('/seller')->middleware('auth')->group(function () {
+    Route::get('/', [SellerController::class, 'main'])->name('seller');
+    Route::get('/about', [SellerController::class, 'about'])->name('sellerAbout');
+    Route::get('/register', [SellerController::class, 'register'])->name('sellerRegister');
+    Route::post('/register', [SellerController::class, 'registerStore'])->name('sellerRegisterStore');
 });
