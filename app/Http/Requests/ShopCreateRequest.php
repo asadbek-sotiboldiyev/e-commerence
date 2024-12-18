@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
-class SellerRegisterRequest extends FormRequest
+class ShopCreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,22 +23,27 @@ class SellerRegisterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'phone' => "required|digits:9|unique:users,phone"
+            'name' => 'required|max:200',
+            'description' => 'required',
+            'address' => 'required',
+            'phone' => 'required|digits:9'
         ];
     }
 
     public function attributes()
     {
         return [
-            'phone' => 'telefon raqam',
+            'name' => "do'kon nomi",
+            'description' => "do'kon haqida ma'lumot",
+            'address' => "manzil",
+            'phone' => "do'kon aloqa reqami"
         ];
     }
 
     public function messages()
     {
         return [
-            'required' => ":attribute ni to'ldiring",
-            'unique' => "bu :attribute avval foydalanilgan",
+            "required" => ":attribute ni to'ldiring",
             'phone.digits' => "telefon 9 raqamli bo'lsin",
         ];
     }

@@ -13,4 +13,6 @@
     @endif
     
     <h3>Sotuvchi: {{ $seller->name }}</h3>
+    <button><a href="{{ route('shopCreate') }}">Do'kon qo'shish</a></button>
 @endsection
+

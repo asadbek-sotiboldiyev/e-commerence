@@ -42,4 +42,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function isSeller(){
+        $seller = Seller::where('user_id', $this->id)->first();
+        if($seller){
+            return true;
+        }
+        return false;
+    }
 }

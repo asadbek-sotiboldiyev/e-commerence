@@ -23,6 +23,10 @@
 		</div>
 	</form>
 	<h3>
-		<a href="{{ route('sellerAbout') }}">Sotuvchi bo'ling</a>
+		@if ($user->isSeller())
+			<a href="{{ route('shopMine') }}">Do'konga</a>
+		@else
+			<a href="{{ route('sellerAbout') }}">Sotuvchi bo'ling</a>
+		@endif
 	</h3>
 @endsection

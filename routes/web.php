@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SellerController;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\ShopController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,4 +37,11 @@ Route::prefix('/seller')->middleware('auth')->group(function () {
     Route::get('/about', [SellerController::class, 'about'])->name('sellerAbout');
     Route::get('/register', [SellerController::class, 'register'])->name('sellerRegister');
     Route::post('/register', [SellerController::class, 'registerStore'])->name('sellerRegisterStore');
+});
+Route::prefix('/shops')->middleware('auth')->group(function () {
+    Route::get('/', [ShopController::class, 'index'])->name('shopIndex');
+    Route::get('/mine', [ShopController::class, 'mine'])->name('shopMine');
+    Route::get('/create', [ShopController::class, 'create'])->name('shopCreate');
+    Route::post('/create', [ShopController::class, 'store'])->name('shopStore');
+    Route::get('/{id}', [ShopController::class, 'show'])->name('shopShow');
 });
