@@ -14,5 +14,6 @@
     <hr>
 
     <div>
+        {{ $shops->links() }}
     </div>
 @endsection

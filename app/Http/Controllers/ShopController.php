@@ -9,8 +9,12 @@ use Illuminate\Http\Request;
 
 class ShopController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth')->only(['mine', 'create', 'store']);
+    }
+
     public function index(){
-        $shops = Shop::paginate(10);
+        $shops = Shop::paginate(5);
         return view('shop/index', $data = [
             'shops' => $shops
         ]);

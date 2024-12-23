@@ -10,4 +10,7 @@
         <p>Sotuvchi: {{ $shop->seller()->name }}</p>
     </div>
     <hr>
+    <a href="#">
+        <button>Mahsulot qo'shish</button>
+    </a>
 @endsection

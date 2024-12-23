@@ -38,7 +38,7 @@ Route::prefix('/seller')->middleware('auth')->group(function () {
     Route::get('/register', [SellerController::class, 'register'])->name('sellerRegister');
     Route::post('/register', [SellerController::class, 'registerStore'])->name('sellerRegisterStore');
 });
-Route::prefix('/shops')->middleware('auth')->group(function () {
+Route::prefix('/shops')->group(function () {
     Route::get('/', [ShopController::class, 'index'])->name('shopIndex');
     Route::get('/mine', [ShopController::class, 'mine'])->name('shopMine');
     Route::get('/create', [ShopController::class, 'create'])->name('shopCreate');
