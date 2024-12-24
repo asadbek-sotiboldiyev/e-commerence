@@ -21,7 +21,10 @@ class ShopController extends Controller
     }
 
     public function mine(){
-        $seller = Seller::where('user_id', auth()->user()->id)->firstOrFail();
+        $seller = Seller::where('user_id', auth()->user()->id)->first();
+        if( !$seller ){
+            return redirect()->route('seller');
+        }
         $shops = Shop::where('seller_id', $seller->id)->get();
         return view('shop/mine', $data = [
             'shops' => $shops

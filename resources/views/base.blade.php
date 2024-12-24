@@ -14,7 +14,7 @@
         <nav>
             <a href="{{ route('shopIndex') }}">Do'konlar</a>
             @auth
-                <a href="{{ route('profile') }}">Profil</a>
+                <a href="{{ route('profile') }}">Profil({{ auth()->user()->name }})</a>
                 <a href="{{ route('logout') }}">Chiqish</a>
             @endauth
             @guest
