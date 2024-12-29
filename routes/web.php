@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SellerController;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShopController;
 
 /*
@@ -44,4 +45,11 @@ Route::prefix('/shops')->group(function () {
     Route::get('/create', [ShopController::class, 'create'])->name('shopCreate');
     Route::post('/create', [ShopController::class, 'store'])->name('shopStore');
     Route::get('/{id}', [ShopController::class, 'show'])->name('shopShow');
+});
+Route::prefix('/products')->group(function () {
+    Route::get('/', [ProductController::class, 'index'])->name('productIndex');
+    Route::get('/create', [ProductController::class, 'create'])->name('productCreate');
+    Route::post('/create', [ProductController::class, 'store'])->name('productStore');
+
+    Route::get('/{id}', [ProductController::class, 'show'])->name('productShow');
 });

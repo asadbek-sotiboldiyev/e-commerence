@@ -11,9 +11,20 @@ class Shop extends Model
 
     protected $fillable = ['name', 'seller_id', 'description', 'address', 'phone', 'photo'];
 
-    public function seller(){
+    public function sellerUser()
+    {
         $seller = Seller::findOrFail($this->seller_id);
         $user = User::findOrFail($seller->user_id);
         return $user;
+    }
+
+    public function seller()
+    {
+        $this->belongsTo(Seller::class);
+    }
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
     }
 }

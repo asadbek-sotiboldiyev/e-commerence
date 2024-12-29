@@ -48,6 +48,6 @@ class ShopController extends Controller
 
         // create Shop
         $shop = Shop::create($data);
-        return redirect()->route('shopsMine');
+        return redirect()->route('shopMine');
     }
 }

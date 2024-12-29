@@ -12,6 +12,7 @@
             <a href="/">Lara-market</a>
         </h1>
         <nav>
+            <a href="{{ route('productIndex') }}">Mahsulotlar</a>
             <a href="{{ route('shopIndex') }}">Do'konlar</a>
             @auth
                 <a href="{{ route('profile') }}">Profil({{ auth()->user()->name }})</a>

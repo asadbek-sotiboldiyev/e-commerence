@@ -10,4 +10,14 @@ class Seller extends Model
     use HasFactory;
 
     protected $fillable = ['user_id', 'phone'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function shops()
+    {
+        return $this->hasMany(Shop::class);
+    }
 }
