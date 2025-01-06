@@ -14,7 +14,8 @@ class ShopController extends Controller
     }
 
     public function index(){
-        $shops = Shop::paginate(5);
+        $shops = Shop::paginate(10);
+        // dd($shops->links()->elements[0]);
         return view('shop/index', $data = [
             'shops' => $shops
         ]);

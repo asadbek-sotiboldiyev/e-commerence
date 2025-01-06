@@ -4,6 +4,21 @@
 
 @section('content')
     <h1>{{ $product->name }}</h1>
+    <div>
+        <button>
+            <a href="{{ route('productEdit', [$product->id]) }}">Tahrirlash</a>
+        </button>
+        <button id="formbtn">
+            <a href="#">Rasm yuklash</a>
+        </button>
+
+        <form action="" name="uploadImageForm" hidden>
+            <hr>
+            <input type="file" name="image">
+            <button>Yuklash</button>
+            <hr>
+        </form>
+    </div>
     <div class="product-card">
         <img src="{{ asset($product->image()->path) }}" width="200">
         <h3>{{ $product->name }}</h3>
@@ -13,8 +28,10 @@
             <a href="{{ route('shopShow', [$product->shop->id]) }}">{{ $product->shop->name }}</a>
         </p>
         <p>Xususiyatlar: {{ $product->description }}</p>
+
     </div>
 
 
 
+    <script src="/assets/js/productshow.js"></script>
 @endsection

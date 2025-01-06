@@ -49,7 +49,7 @@ class ProductController extends Controller
             'path' => $path,
             'product_id' => $new_product->id
         ]);
-        return redirect('/');
+        return redirect()->route('productShow', ['id' => $new_product->id]);
     }
 
     /**
@@ -68,15 +68,23 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $shops = auth()->user()->shops;
+        $product = Product::findOrFail($id);
+        return view('product/edit', $data = [
+            'shops' => $shops,
+            'product' => $product,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ProductRequest $request, string $id)
     {
-        //
+        $data = $request->validated();
+        $product = Product::findOrFail($id);
+        $new_product = $product::update($data);
+        return redirect()->route('productShow', ['id' => $new_product->id]);
     }
 
     /**

@@ -12,7 +12,7 @@
     @empty
         <h2>Sizda hali do'kon yo'q</h2>
     @endforelse
-    <a href="#">
+    <a href="{{ route('shopCreate') }}">
         <button>Do'kon qo'shish</button>
     </a>
 @endsection

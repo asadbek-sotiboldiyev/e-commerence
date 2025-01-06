@@ -14,6 +14,10 @@
     <hr>
 
     <div>
-        {{ $shops->links() }}
+        @foreach ($shops->links()->elements[0] as $page => $url)
+            <button>
+                <a href="{{ $url }}">{{ $page }}</a>
+            </button>
+        @endforeach
     </div>
 @endsection
