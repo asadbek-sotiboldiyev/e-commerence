@@ -5,12 +5,17 @@
 @section('content')
     <h1>{{ $product->name }}</h1>
     <div>
-        <button>
-            <a href="{{ route('productEdit', [$product->id]) }}">Tahrirlash</a>
-        </button>
-        <button id="formbtn">
-            <a href="#">Rasm yuklash</a>
-        </button>
+        @can('update', $product)
+            <div>
+                <button>
+                    <a href="{{ route('productEdit', [$product->id]) }}">Tahrirlash</a>
+                </button>
+                <button id="formbtn">
+                    <a href="#">Rasm yuklash</a>
+                </button>
+            </div>
+        @endcan
+
 
         <form action="" name="uploadImageForm" hidden>
             <hr>

@@ -20,4 +20,10 @@ class Seller extends Model
     {
         return $this->hasMany(Shop::class);
     }
+
+    public function isOwner($shop_id)
+    {
+        $shop = Shop::where('id', '=', $shop_id)->first();
+        return $shop->seller->id == $this->id;
+    }
 }

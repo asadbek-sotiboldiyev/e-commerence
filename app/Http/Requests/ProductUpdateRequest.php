@@ -3,16 +3,14 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Auth;
 
-class ProductRequest extends FormRequest
+class ProductUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        
         $user = auth()->user();
         return auth()->check() and $user->isSeller();
     }
@@ -30,7 +28,6 @@ class ProductRequest extends FormRequest
             'description' => 'required',
             'price' => 'required',
             'stock' => 'required',
-            'image' => 'required|image|max:2048',
         ];
     }
 }

@@ -20,7 +20,7 @@ class Shop extends Model
 
     public function seller()
     {
-        $this->belongsTo(Seller::class);
+        return $this->belongsTo(Seller::class);
     }
 
     public function products()
