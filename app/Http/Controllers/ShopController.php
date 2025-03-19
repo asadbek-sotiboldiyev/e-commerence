@@ -16,7 +16,7 @@ class ShopController extends Controller
     public function index(){
         $shops = Shop::paginate(10);
         // dd($shops->links()->elements[0]);
-        return view('shop/index', $data = [
+        return view('shop.index', $data = [
             'shops' => $shops
         ]);
     }
@@ -27,20 +27,20 @@ class ShopController extends Controller
             return redirect()->route('seller');
         }
         $shops = Shop::where('seller_id', $seller->id)->get();
-        return view('shop/mine', $data = [
+        return view('shop.mine', $data = [
             'shops' => $shops
         ]);
     }
 
     public function show($id){
         $shop = Shop::findOrFail($id);
-        return view('shop/show', $data = [
+        return view('shop.show', $data = [
             'shop' => $shop
         ]);
     }
 
     public function create(){
-        return view('shop/create');
+        return view('shop.create');
     }
 
     public function store(ShopCreateRequest $request){

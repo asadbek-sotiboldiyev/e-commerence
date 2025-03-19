@@ -21,7 +21,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::paginate(10);
-        return view('product/index', $data = [
+        return view('product.index', $data = [
             'products' => $products
         ]);
     }
@@ -32,7 +32,7 @@ class ProductController extends Controller
     public function create()
     {
         $shops = auth()->user()->shops;
-        return view('product/create', $data = [
+        return view('product.create', $data = [
             'shops' => $shops
         ]);
     }
@@ -45,7 +45,7 @@ class ProductController extends Controller
         $data = $request->validated();
         $user = auth()->user();
 
-        if( !$user->seller->isOwner($data['shop_id']) ){
+        if (!$user->seller->isOwner($data['shop_id'])) {
             abort(403);
         }
 

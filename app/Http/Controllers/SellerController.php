@@ -18,18 +18,18 @@ class SellerController extends Controller
 
     public function main(){
         $seller = auth()->user();
-        return view('seller/main', $data = [
+        return view('seller.main', $data = [
             'seller' => $seller
         ]);
     }
 
     public function about(){
-        return view('seller/about');
+        return view('seller.about');
     }
 
     public function register(){
         $user = auth()->user();
-        return view('seller/register', $data = [
+        return view('seller.register', $data = [
             'user' => $user
         ]);
     }
